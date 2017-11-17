@@ -30,7 +30,7 @@ module.exports.take_screenshot = (event, context, cb) => {
   console.log(cmd);
 
   // run the phantomjs command
-  exec(cmd, (error, stdout, stderr) => {
+  exec(cmd, {maxBuffer: 1024 * 500}, (error, stdout, stderr) => {
     if (error) {
       // the command failed (non-zero), fail the entire call
       console.warn(`exec error: ${error}`, stdout, stderr);
